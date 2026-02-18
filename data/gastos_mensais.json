@@ -1,0 +1,26 @@
+[
+  {
+    "data": "01/02/2026",
+    "categoria": "Alimentação",
+    "descricao": "Supermercado",
+    "valor": 450
+  },
+  {
+    "data": "03/02/2026",
+    "categoria": "Lazer",
+    "descricao": "Streaming",
+    "valor": 55
+  },
+  {
+    "data": "05/02/2026",
+    "categoria": "Transporte",
+    "descricao": "Uber",
+    "valor": 120
+  },
+  {
+    "data": "10/02/2026",
+    "categoria": "Moradia",
+    "descricao": "Aluguel",
+    "valor": 1200
+  }
+]
