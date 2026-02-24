@@ -1,149 +1,139 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
 
-## Contexto
+# 💸 FinanBot — Educador Financeiro Pessoal
 
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
-
-- **Antecipar necessidades** ao invés de apenas responder perguntas
-- **Personalizar** sugestões com base no contexto de cada cliente
-- **Cocriar soluções** financeiras de forma consultiva
-- **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
-
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
+> Agente de IA generativa que analisa seus gastos mensais e responde dúvidas financeiras com base nos seus próprios dados — de forma clara, acessível e 100% local.
 
 ---
 
-## O Que Você Deve Entregar
+## 🎯 O Problema
 
-### 1. Documentação do Agente
-
-Defina **o que** seu agente faz e **como** ele funciona:
-
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
-
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
+Muitas pessoas não sabem para onde vai seu dinheiro no fim do mês. Sem visibilidade sobre gastos e saldo, o risco de endividamento aumenta. O **FinanBot** resolve isso organizando suas finanças de forma simples e educativa.
 
 ---
 
-### 2. Base de Conhecimento
+## 🤖 O Agente
 
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
+O FinanBot lê dados financeiros armazenados localmente (JSON/CSV), calcula automaticamente o total de gastos, saldo restante e distribuição por categoria, e responde perguntas do usuário com linguagem acessível — sem jargões, sem julgamentos.
 
-| Arquivo | Formato | Descrição |
-|---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
-
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
-
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
-
----
-
-### 3. Prompts do Agente
-
-Documente os prompts que definem o comportamento do seu agente:
-
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
-
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
-
----
-
-### 4. Aplicação Funcional
-
-Desenvolva um **protótipo funcional** do seu agente:
-
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
-
-📁 **Pasta:** [`src/`](./src/)
-
----
-
-### 5. Avaliação e Métricas
-
-Descreva como você avalia a qualidade do seu agente:
-
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
-
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
-
----
-
-### 6. Pitch
-
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
-
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
-
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
-
----
-
-## Ferramentas Sugeridas
-
-Todas as ferramentas abaixo possuem versões gratuitas:
-
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
-
----
-
-## Estrutura do Repositório
+**Ele responde apenas com base nos dados fornecidos**, evitando alucinações e garantindo confiabilidade.
 
 ```
-📁 lab-agente-financeiro/
-│
-├── 📄 README.md
-│
-├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
-│
-├── 📁 docs/                          # Documentação do projeto
-│   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia de dados
-│   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
-│
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
-│
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
-│
-└── 📁 examples/                      # Referências e exemplos
-    └── README.md
+Usuário → Interface Streamlit → Ollama (LLM local)
+                                       ↑
+                           data/ (JSON + CSV do usuário)
 ```
 
 ---
 
-## Dicas Finais
+## 🧠 Persona
 
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
+| Atributo | Detalhe |
+|---|---|
+| **Nome** | FinanBot |
+| **Perfil** | Educativo, organizado, não julgador |
+| **Tom** | Acessível, informal moderado, sem termos técnicos |
+| **Exemplo** | *"Olá! Sou o FinanBot, vamos organizar suas finanças hoje?"* |
+
+---
+
+## 🗂️ Estrutura do Repositório
+
+```
+📁 dio-lab-bia-do-futuro/
+├── 📁 data/
+│   ├── dados_usuario.json       # Perfil: nome, renda, meta de poupança
+│   ├── gastos_mensais.json      # Gastos do mês atual por categoria
+│   └── historico_mensal.csv     # Histórico de movimentações anteriores
+├── 📁 docs/
+│   ├── 01-documentacao-agente.md   # Caso de uso, persona e arquitetura
+│   ├── 02-base-conhecimento.md     # Estratégia de dados e integração
+│   ├── 03-prompts.md               # System prompt e exemplos few-shot
+│   ├── 04-metricas.md              # Testes e avaliação do agente
+│   └── 05-pitch.md                 # Roteiro do pitch de 3 minutos
+├── 📁 src/
+│   └── app.py                      # Aplicação Streamlit
+└── README.md
+```
+
+---
+
+## 💬 System Prompt
+
+```
+Você é o FinanBot, um assistente financeiro pessoal focado em organização de finanças.
+Responda de forma clara e objetiva, utilizando apenas os dados fornecidos no contexto.
+
+REGRAS:
+- Utilize exclusivamente as informações presentes no contexto enviado.
+- Nunca invente valores, categorias ou dados.
+- Não faça recomendações de investimento nem previsões financeiras.
+- Se a informação não estiver no contexto, responda:
+  "Não possuo dados suficientes para responder com base nas informações disponíveis."
+- Não julgue o usuário pelos gastos.
+```
+
+---
+
+## 🧪 Exemplos de Interação
+
+| Pergunta do Usuário | Resposta do FinanBot |
+|---|---|
+| "Quanto ainda posso gastar este mês?" | "Sua renda é R$ 3.000 e seus gastos somam R$ 1.825. Seu saldo restante é de **R$ 1.175**." |
+| "Quanto gastei com lazer?" | "Você gastou **R$ 55** na categoria Lazer neste mês." |
+| "Onde devo investir?" | "Não realizo recomendações de investimento. Posso ajudar a analisar seus gastos." |
+| "Qual a previsão do tempo?" | "Sou especializado em finanças. Posso ajudar com algo relacionado ao seu orçamento?" |
+
+---
+
+## ✅ Resultados dos Testes
+
+| Teste | Resultado |
+|---|---|
+| Consulta de gasto por categoria | ✅ Correto |
+| Consulta de saldo restante | ✅ Correto |
+| Pergunta fora do escopo | ✅ Recusou corretamente |
+| Informação inexistente nos dados | ✅ Admitiu falta de dados |
+
+---
+
+## 🚀 Como Executar
+
+**Pré-requisitos:** Python 3.9+ e [Ollama](https://ollama.ai/) instalado localmente.
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/Rosem112/dio-lab-bia-do-futuro.git
+cd dio-lab-bia-do-futuro
+
+# 2. Instale as dependências
+pip install -r requirements.txt
+
+# 3. Suba o modelo no Ollama
+ollama run llama3
+
+# 4. Execute a aplicação
+streamlit run src/app.py
+```
+
+---
+
+## 🛠️ Tecnologias
+
+| Ferramenta | Uso |
+|---|---|
+| [Streamlit](https://streamlit.io/) | Interface web do chatbot |
+| [Ollama](https://ollama.ai/) | Execução local do LLM (sem custo, com privacidade) |
+| Python + JSON/CSV | Lógica da aplicação e base de conhecimento |
+
+---
+
+## 🔒 Segurança e Privacidade
+
+- Execução **100% local** — nenhum dado sai da sua máquina
+- O agente **não acessa informações externas**
+- Respostas limitadas ao contexto fornecido, eliminando alucinações
+- Sem integração com APIs pagas ou serviços em nuvem
+
+---
+
+*Desenvolvido por [Rosem112](https://github.com/Rosem112) · Laboratório Bia do Futuro — [DIO](https://www.dio.me/)*
