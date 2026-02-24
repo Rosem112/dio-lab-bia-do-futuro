@@ -43,5 +43,5 @@ pip install -r requirements.txt
 ollama run llama3
 
 # Rodar a aplicação FinanBot
-streamlit run app.py
+streamlit run src/app.py
 ```
